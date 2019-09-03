@@ -18,5 +18,9 @@ const kCardTextColorStyle = TextStyle(
   color: Colors.black,
 );
 
+const kDescriptionTextStyle = TextStyle(
+  fontSize: 20,
+);
+
 const String kInfoButton =
     'Learn more about the Final Fantasy franchise with this application! Huge shoutout to MoogleAPI!';

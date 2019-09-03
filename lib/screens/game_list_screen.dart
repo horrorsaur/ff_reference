@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ff_reference/constants.dart';
 import 'package:ff_reference/components/ff_card.dart';
+import 'package:ff_reference/final_fantasy.dart';
+import 'game_screen.dart';
 
 class GameListScreen extends StatefulWidget {
   GameListScreen(this.ffGameData);
@@ -14,7 +16,6 @@ class GameListScreen extends StatefulWidget {
 class _GameListScreenState extends State<GameListScreen> {
   // API Variables
   String gameTitle;
-  String releaseDate;
   String gamePictureURL;
 
   // Game Tracking Variables
@@ -29,12 +30,17 @@ class _GameListScreenState extends State<GameListScreen> {
   void updateUI(dynamic ffGameData) {
     if (ffGameData == null) {
       gameTitle = '';
-      releaseDate = '';
       gamePictureURL = '';
       return;
     }
+  }
 
-    releaseDate = ffGameData[currentGame]['releaseDate'];
+  dynamic getFFCharacterData(int currentGame) async {
+    var ffCharacterData = await FinalFantasyData().getFinalFantasyCharacters();
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return GameScreen(widget.ffGameData, ffCharacterData, currentGame);
+    }));
   }
 
   String getGamePicture(int currentGame) {
@@ -122,7 +128,9 @@ class _GameListScreenState extends State<GameListScreen> {
                           ],
                         ),
                         color: Colors.white,
-                        onPress: () {},
+                        onPress: () {
+                          getFFCharacterData(0);
+                        },
                       ),
                     ),
                     Expanded(
@@ -136,7 +144,9 @@ class _GameListScreenState extends State<GameListScreen> {
                           ],
                         ),
                         color: Colors.white,
-                        onPress: () {},
+                        onPress: () {
+                          getFFCharacterData(1);
+                        },
                       ),
                     ),
                   ],
@@ -157,7 +167,9 @@ class _GameListScreenState extends State<GameListScreen> {
                         ],
                       ),
                       color: Colors.white,
-                      onPress: () {},
+                      onPress: () {
+                        getFFCharacterData(2);
+                      },
                     ),
                   ),
                   Expanded(
@@ -171,7 +183,9 @@ class _GameListScreenState extends State<GameListScreen> {
                         ],
                       ),
                       color: Colors.white,
-                      onPress: () {},
+                      onPress: () {
+                        getFFCharacterData(3);
+                      },
                     ),
                   ),
                 ],
@@ -182,6 +196,9 @@ class _GameListScreenState extends State<GameListScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(4);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -194,6 +211,9 @@ class _GameListScreenState extends State<GameListScreen> {
                   ),
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(5);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -212,6 +232,9 @@ class _GameListScreenState extends State<GameListScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(6);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -224,6 +247,9 @@ class _GameListScreenState extends State<GameListScreen> {
                   ),
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(7);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -242,6 +268,9 @@ class _GameListScreenState extends State<GameListScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(8);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -254,6 +283,9 @@ class _GameListScreenState extends State<GameListScreen> {
                   ),
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(9);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -272,6 +304,9 @@ class _GameListScreenState extends State<GameListScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(10);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -284,6 +319,9 @@ class _GameListScreenState extends State<GameListScreen> {
                   ),
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(11);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -302,6 +340,9 @@ class _GameListScreenState extends State<GameListScreen> {
                 children: <Widget>[
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(12);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(
@@ -314,6 +355,9 @@ class _GameListScreenState extends State<GameListScreen> {
                   ),
                   Expanded(
                     child: FFCard(
+                      onPress: () {
+                        getFFCharacterData(13);
+                      },
                       child: Column(
                         children: <Widget>[
                           Image.network(

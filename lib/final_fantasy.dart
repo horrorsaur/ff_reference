@@ -10,7 +10,7 @@ import 'package:ff_reference/services/network_helper.dart';
 //https://www.moogleapi.com/api/v1/characters/random
 
 const moogleGameListURL = 'https://www.moogleapi.com/api/v1/games';
-const moogleCharacterListURL = '//https://www.moogleapi.com/api/v1/characters';
+const moogleCharacterListURL = 'https://www.moogleapi.com/api/v1/characters';
 
 class FinalFantasyData {
   NetworkHelper nGameHelper = NetworkHelper(moogleGameListURL);
