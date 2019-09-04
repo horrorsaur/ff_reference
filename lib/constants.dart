@@ -14,8 +14,11 @@ const kGameTitleText = TextStyle(
   fontSize: 48,
 );
 
-const kCardTextColorStyle = TextStyle(
+const kCardTitleTextStyle = TextStyle(
   color: Colors.black,
+  fontSize: 30,
+  fontFamily: 'Chilanka',
+  fontWeight: FontWeight.bold,
 );
 
 const kDescriptionTextStyle = TextStyle(

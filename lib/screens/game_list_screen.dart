@@ -82,294 +82,86 @@ class _GameListScreenState extends State<GameListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          'Matoya\'s Cave',
+          style: kTitleTextStyle,
+        ),
+        leading: IconButton(
+          onPressed: () {
+            if (widget.ffGameData == null) {
+              returnToLoadingScreen();
+            } else {
+              print(kInfoButton);
+            }
+          },
+          icon: showBackButton(),
+        ),
+      ),
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 38.0, left: 24.0),
-                    child: Text(
-                      'Final Fantasy',
-                      style: kTitleTextStyle,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      if (widget.ffGameData == null) {
-                        returnToLoadingScreen();
-                      } else {
-                        print(kInfoButton);
-                      }
-                    },
-                    icon: showBackButton(),
-                    alignment: Alignment.centerRight,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-            ),
             Padding(
-              padding: const EdgeInsets.only(top: 100),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Expanded(
-                      child: FFCard(
-                        child: Column(
-                          children: <Widget>[
-                            Image.network(
-                              getGamePicture(0),
-                              height: 100,
-                            ),
-                          ],
+              padding: const EdgeInsets.only(top: 50.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FFCard(
+                    onPress: () {
+                      getFFCharacterData(0);
+                    },
+                    color: Colors.white,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(
+                            'Final Fantasy 1',
+                            style: kCardTitleTextStyle,
+                          ),
                         ),
-                        color: Colors.white,
-                        onPress: () {
-                          getFFCharacterData(0);
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: FFCard(
-                        child: Column(
-                          children: <Widget>[
-                            Image.network(
-                              getGamePicture(1),
-                              height: 100,
-                            ),
-                          ],
+                        Image.asset(
+                          'assets/images/ff_logos/FF_1.png',
+                          height: 200,
+                          fit: BoxFit.cover,
                         ),
-                        color: Colors.white,
-                        onPress: () {
-                          getFFCharacterData(1);
-                        },
-                      ),
+                        SizedBox(height: 5),
+                      ],
                     ),
-                  ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 75),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FFCard(
+                  onPress: () {
+                    getFFCharacterData(1);
+                  },
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          'Final Fantasy 2',
+                          style: kCardTitleTextStyle,
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/ff_logos/FF_2.png',
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 5),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(2),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                      color: Colors.white,
-                      onPress: () {
-                        getFFCharacterData(2);
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(3),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                      color: Colors.white,
-                      onPress: () {
-                        getFFCharacterData(3);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(4);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(4),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(5);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(5),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(6);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(6),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(7);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(7),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(8);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(8),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(9);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(9),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(10);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(10),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(11);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(11),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(12);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(12),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: FFCard(
-                      onPress: () {
-                        getFFCharacterData(13);
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(
-                            getGamePicture(13),
-                            height: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              ],
             ),
           ],
         ),

@@ -22,8 +22,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/ff_logos/
 
   fonts:
     - family: Chilanka
       fonts:
         - asset: assets/Fonts/Chilanka-Regular.ttf
+    - family: FinalFantasy
+      fonts:
+        - asset: assets/Fonts/finalf.ttf

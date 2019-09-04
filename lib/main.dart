@@ -8,7 +8,7 @@ class FFReference extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.yellow,
+        primaryColor: Color(0xFF222D37),
         scaffoldBackgroundColor: Color(0xFF222D37),
       ),
       home: LoadingScreen(),
