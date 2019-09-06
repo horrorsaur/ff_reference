@@ -21,6 +21,8 @@ class _GameListScreenState extends State<GameListScreen> {
   // Game Tracking Variables
   int currentGame = 0; // currentGame = Final Fantasy 01
 
+  List<FFCard> ffGameCards = [];
+
   @override
   void initState() {
     super.initState();
@@ -79,6 +81,36 @@ class _GameListScreenState extends State<GameListScreen> {
     }
   }
 
+  Widget renderGameCards({int selectedGame, String imageName}) {
+    return Row(
+      children: <Widget>[
+        FFCard(
+          color: Colors.white,
+          onPress: () {
+            getFFCharacterData(selectedGame);
+          },
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  getGameTitle(selectedGame),
+                  style: kCardTitleTextStyle,
+                ),
+              ),
+              Image.asset(
+                'assets/images/ff_logos/$imageName.png',
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 5),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,68 +133,13 @@ class _GameListScreenState extends State<GameListScreen> {
         ),
       ),
       body: SafeArea(
-        child: ListView(
+        child: PageView(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  FFCard(
-                    onPress: () {
-                      getFFCharacterData(0);
-                    },
-                    color: Colors.white,
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
-                            'Final Fantasy 1',
-                            style: kCardTitleTextStyle,
-                          ),
-                        ),
-                        Image.asset(
-                          'assets/images/ff_logos/FF_1.png',
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(height: 5),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 75),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FFCard(
-                  onPress: () {
-                    getFFCharacterData(1);
-                  },
-                  color: Colors.white,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Text(
-                          'Final Fantasy 2',
-                          style: kCardTitleTextStyle,
-                        ),
-                      ),
-                      Image.asset(
-                        'assets/images/ff_logos/FF_2.png',
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 5),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            renderGameCards(selectedGame: 0, imageName: "FF_1"),
+            renderGameCards(selectedGame: 1, imageName: "FF_2"),
+            renderGameCards(selectedGame: 2, imageName: "FF_3"),
+            renderGameCards(selectedGame: 3, imageName: "FF_4"),
+            renderGameCards(selectedGame: 4, imageName: "FF_5"),
           ],
         ),
       ),
