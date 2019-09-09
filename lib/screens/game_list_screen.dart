@@ -48,13 +48,13 @@ class _GameListScreenState extends State<GameListScreen> {
     return gameTitle;
   }
 
-  void returnToLoadingScreen() {
+  void _returnToLoadingScreen() {
     Navigator.pop(context);
   }
 
   // This method handles deciding whether the button should be rendered as a back arrow
   // or an information icon.
-  Icon showBackButton() {
+  Icon _showBackButton() {
     if (widget.ffGameData == null) {
       Icon titleIcon = Icon(Icons.arrow_back);
       return titleIcon;
@@ -142,33 +142,76 @@ class _GameListScreenState extends State<GameListScreen> {
         leading: IconButton(
           onPressed: () {
             if (widget.ffGameData == null) {
-              returnToLoadingScreen();
+              _returnToLoadingScreen();
             } else {
               _showDialog();
 //              print(kInfoButton);
             }
           },
-          icon: showBackButton(),
+          icon: _showBackButton(),
         ),
       ),
       body: SafeArea(
         child: PageView(
+          pageSnapping: true,
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            renderGameCards(selectedGame: 0, imageName: "FF_1"),
-            renderGameCards(selectedGame: 1, imageName: "FF_2"),
-            renderGameCards(selectedGame: 2, imageName: "FF_3"),
-            renderGameCards(selectedGame: 3, imageName: "FF_4"),
-            renderGameCards(selectedGame: 4, imageName: "FF_5"),
-            renderGameCards(selectedGame: 5, imageName: "FF_6"),
-            renderGameCards(selectedGame: 6, imageName: "FF_7"),
-            renderGameCards(selectedGame: 7, imageName: "FF_8"),
-            renderGameCards(selectedGame: 8, imageName: "FF_9"),
-            renderGameCards(selectedGame: 9, imageName: "FF_10"),
-            renderGameCards(selectedGame: 11, imageName: "FF_12"),
-            renderGameCards(selectedGame: 12, imageName: "FF_13"),
-            renderGameCards(selectedGame: 0, imageName: "FF_14"),
-            renderGameCards(selectedGame: 14, imageName: "FF_15"),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 0, imageName: "FF_1"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 1, imageName: "FF_2"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 2, imageName: "FF_3"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 3, imageName: "FF_4"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 4, imageName: "FF_5"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 5, imageName: "FF_6"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 6, imageName: "FF_7"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 7, imageName: "FF_8"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 8, imageName: "FF_9"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 9, imageName: "FF_10"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 11, imageName: "FF_12"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 12, imageName: "FF_13"),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                SizedBox(height: 25.0),
+                renderGameCards(selectedGame: 0, imageName: "FF_14"),
+                SizedBox(height: 50.0),
+                renderGameCards(selectedGame: 14, imageName: "FF_15"),
+              ],
+            ),
           ],
         ),
       ),

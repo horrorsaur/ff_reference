@@ -1,4 +1,4 @@
-import 'package:ff_reference/services/network_helper.dart';
+import 'package:ff_reference/utils/network_helper.dart';
 
 // This class handles retrieving all the data that will be passed from the MoogleAPI to our application.
 // We will build various functions and variables that will pertain to the specific API endpoints for
