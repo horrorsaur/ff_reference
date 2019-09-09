@@ -16,12 +16,6 @@ class GameListScreen extends StatefulWidget {
 class _GameListScreenState extends State<GameListScreen> {
   // API Variables
   String gameTitle;
-  String gamePictureURL;
-
-  // Game Tracking Variables
-  int currentGame = 0; // currentGame = Final Fantasy 01
-
-  List<FFCard> ffGameCards = [];
 
   @override
   void initState() {
@@ -32,7 +26,6 @@ class _GameListScreenState extends State<GameListScreen> {
   void updateUI(dynamic ffGameData) {
     if (ffGameData == null) {
       gameTitle = '';
-      gamePictureURL = '';
       return;
     }
   }
@@ -43,16 +36,6 @@ class _GameListScreenState extends State<GameListScreen> {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return GameScreen(widget.ffGameData, ffCharacterData, currentGame);
     }));
-  }
-
-  String getGamePicture(int currentGame) {
-    if (widget.ffGameData == null) {
-      gamePictureURL = '';
-      return gamePictureURL;
-    }
-
-    gamePictureURL = widget.ffGameData[currentGame]['picture'];
-    return gamePictureURL;
   }
 
   String getGameTitle(int currentGame) {
@@ -81,6 +64,38 @@ class _GameListScreenState extends State<GameListScreen> {
     }
   }
 
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text(
+            "FF Library",
+            style: kInfoTitleStyling,
+          ),
+          content: Text(
+            kInfoButton,
+            style: kInfoTextStyling,
+          ),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: Text(
+                "Close",
+                style: kInfoCloseTextStyling,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget renderGameCards({int selectedGame, String imageName}) {
     return Row(
       children: <Widget>[
@@ -89,22 +104,25 @@ class _GameListScreenState extends State<GameListScreen> {
           onPress: () {
             getFFCharacterData(selectedGame);
           },
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  getGameTitle(selectedGame),
-                  style: kCardTitleTextStyle,
+          child: Container(
+            height: 250,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    getGameTitle(selectedGame),
+                    style: kCardTitleTextStyle,
+                  ),
                 ),
-              ),
-              Image.asset(
-                'assets/images/ff_logos/$imageName.png',
-                height: 200,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 5),
-            ],
+                Image.asset(
+                  'assets/images/ff_logos/$imageName.png',
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(height: 5),
+              ],
+            ),
           ),
         ),
       ],
@@ -118,7 +136,7 @@ class _GameListScreenState extends State<GameListScreen> {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          'Matoya\'s Cave',
+          'FF Library',
           style: kTitleTextStyle,
         ),
         leading: IconButton(
@@ -126,7 +144,8 @@ class _GameListScreenState extends State<GameListScreen> {
             if (widget.ffGameData == null) {
               returnToLoadingScreen();
             } else {
-              print(kInfoButton);
+              _showDialog();
+//              print(kInfoButton);
             }
           },
           icon: showBackButton(),
@@ -134,12 +153,22 @@ class _GameListScreenState extends State<GameListScreen> {
       ),
       body: SafeArea(
         child: PageView(
+          scrollDirection: Axis.vertical,
           children: <Widget>[
             renderGameCards(selectedGame: 0, imageName: "FF_1"),
             renderGameCards(selectedGame: 1, imageName: "FF_2"),
             renderGameCards(selectedGame: 2, imageName: "FF_3"),
             renderGameCards(selectedGame: 3, imageName: "FF_4"),
             renderGameCards(selectedGame: 4, imageName: "FF_5"),
+            renderGameCards(selectedGame: 5, imageName: "FF_6"),
+            renderGameCards(selectedGame: 6, imageName: "FF_7"),
+            renderGameCards(selectedGame: 7, imageName: "FF_8"),
+            renderGameCards(selectedGame: 8, imageName: "FF_9"),
+            renderGameCards(selectedGame: 9, imageName: "FF_10"),
+            renderGameCards(selectedGame: 11, imageName: "FF_12"),
+            renderGameCards(selectedGame: 12, imageName: "FF_13"),
+            renderGameCards(selectedGame: 0, imageName: "FF_14"),
+            renderGameCards(selectedGame: 14, imageName: "FF_15"),
           ],
         ),
       ),

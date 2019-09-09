@@ -27,3 +27,15 @@ const kDescriptionTextStyle = TextStyle(
 
 const String kInfoButton =
     'Learn more about the Final Fantasy franchise with this application! Huge shoutout to MoogleAPI!';
+
+const kInfoTitleStyling = TextStyle(
+  fontSize: 30.0,
+);
+
+const kInfoTextStyling = TextStyle(
+  fontSize: 18.0,
+);
+
+const kInfoCloseTextStyling = TextStyle(
+  fontSize: 14.0,
+);

@@ -46,33 +46,35 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.arrow_back),
-                iconSize: 34,
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, top: 10.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back),
+                  iconSize: 34,
+                ),
               ),
             ),
-          ),
-          Text(
-            gameTitle,
-            style: kGameTitleText,
-          ),
-          Image.network(gamePictureURL),
-          Text('Release Date: $releaseDate'),
-          Text('Released on $platform'),
-          Text(
-            description,
-            style: kDescriptionTextStyle,
-          ),
-        ],
+            Text(
+              gameTitle,
+              style: kGameTitleText,
+            ),
+            Image.network(gamePictureURL),
+            Text('Release Date: $releaseDate'),
+            Text('Released on $platform'),
+            Text(
+              description,
+              style: kDescriptionTextStyle,
+            ),
+          ],
+        ),
       ),
     );
   }
